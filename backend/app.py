@@ -1,20 +1,30 @@
 
 from flask import Flask, request, jsonify
-from chatbot import get_bot_response
+from flask_cors import CORS
+from chatbot import get_chatbot_response, save_faq
 
 app = Flask(__name__)
+CORS(app)
 
 @app.route('/api/chat', methods=['POST'])
 def chat():
-    data = request.get_json()
-    user_message = data.get('message', '')
-    
-    if not user_message:
-        return jsonify({'response': 'Please enter a valid message.'}), 400
+    data = request.json
+    user_msg = data.get('message', '')
+    response = get_chatbot_response(user_msg)
+    return jsonify({'response': response})
 
-    bot_reply = get_bot_response(user_message)
-    return jsonify({'response': bot_reply})
+@app.route('/api/add-faq', methods=['POST'])
+def add_faq():
+    data = request.json
+    category = data.get('category', 'General')
+    question = data.get('question', '')
+    answer = data.get('answer', '')
+    
+    if question and answer:
+        save_faq(category, question, answer)
+        return jsonify({'status': 'success', 'message': 'FAQ added successfully'})
+    return jsonify({'status': 'error', 'message': 'Invalid input'}), 400
 
 if __name__ == '__main__':
-    app.run(debug=True, port=5000)
-  
+    app.run(port=5000, debug=True)
+    
