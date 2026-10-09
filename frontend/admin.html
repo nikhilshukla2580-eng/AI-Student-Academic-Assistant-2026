@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>APSU Admin - Teacher Portal</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body class="admin-body">
+    <div class="admin-container">
+        <h2><i class="fa-solid fa-user-tie"></i> Teacher & Admin Dashboard</h2>
+        <p>Add new notices, FAQs, or exam updates for APSU students.</p>
+
+        <form id="admin-form">
+            <label for="category">Category:</label>
+            <select id="category">
+                <option value="Notice">Notice Update</option>
+                <option value="Academic">Academic FAQ</option>
+                <option value="Exam">Exam Schedule</option>
+            </select>
+
+            <br><br>
+            <label for="question">Question / Keywords:</label>
+            <input type="text" id="question" placeholder="e.g. Next Semester Registration Date" required style="width: 100%; padding: 8px; margin-top: 5px;">
+
+            <br><br>
+            <label for="answer">Answer / Notice Details:</label>
+            <textarea id="answer" rows="4" placeholder="Enter official notice or response..." required style="width: 100%; padding: 8px; margin-top: 5px;"></textarea>
+
+            <br><br>
+            <button type="submit" class="admin-btn" style="padding: 10px 20px; cursor: pointer;"><i class="fa-solid fa-plus"></i> Publish Notice</button>
+        </form>
+        <div id="status-msg" style="margin-top: 15px; font-weight: bold; color: green;"></div>
+        <br>
+        <a href="index.html" class="back-link">← Go to Student Chat Interface</a>
+    </div>
+
+    <script>
+        document.getElementById('admin-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const category = document.getElementById('category').value;
+            const question = document.getElementById('question').value;
+            const answer = document.getElementById('answer').value;
+
+            fetch('http://127.0.0.1:5000/api/add-faq', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ category, question, answer })
+            })
+            .then(res => res.json())
+            .then(data => {
+                document.getElementById('status-msg').innerText = "Notice added successfully!";
+                document.getElementById('admin-form').reset();
+            })
+            .catch(() => {
+                document.getElementById('status-msg').innerText = "Error updating notice.";
+            });
+        });
+    </script>
+</body>
+</html>
