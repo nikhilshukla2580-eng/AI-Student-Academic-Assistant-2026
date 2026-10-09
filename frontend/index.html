@@ -4,25 +4,40 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI Academic Assistant</title>
+    <title>APSU AI Academic Assistant</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
     <div class="chat-container">
-        <div class="chat-header">
-            <h2>🎓 Academic Assistant</h2>
-            <p>Ask about Syllabus, FAQs & Subjects</p>
+        <!-- Header -->
+        <header class="chat-header">
+            <h2>🎓 APSU Student Academic AI Assistant</h2>
+            <p>Awadhesh Pratap Singh University, Rewa</p>
+        </header>
+
+        <!-- Quick Links Buttons -->
+        <div class="quick-links">
+            <a href="https://apsu.mponline.gov.in/portal/" target="_blank" class="btn-link"><i class="fa-solid fa-globe"></i> MPOnline Portal</a>
+            <a href="https://share.google/y3DLZPbjaHIH6jnNy" target="_blank" class="btn-link"><i class="fa-solid fa-file-lines"></i> Marksheet Portal</a>
+            <a href="https://share.google/bolPJrwg8nLkSPfjN" target="_blank" class="btn-link"><i class="fa-solid fa-university"></i> Official Website</a>
         </div>
+
+        <!-- Chat Box -->
         <div class="chat-box" id="chat-box">
             <div class="message bot-message">
-                🤖 Hello! I am your Academic Assistant. How can I help you today?
+                Namaste! Main APSU Academic Assistant hun. Aap mujhse syllabus, MPOnline links, ya examination ke baare mein puch sakte hain.
             </div>
         </div>
+
+        <!-- Input Area -->
         <div class="chat-input-area">
-            <input type="text" id="user-input" placeholder="Type your question here...">
-            <button id="send-btn">Send</button>
+            <button id="mic-btn" class="mic-btn" title="Speak"><i class="fa-solid fa-microphone"></i></button>
+            <input type="text" id="user-input" placeholder="Apna sawal yahan type karein...">
+            <button id="send-btn" class="send-btn"><i class="fa-solid fa-paper-plane"></i></button>
         </div>
     </div>
+
     <script src="script.js"></script>
 </body>
 </html>
