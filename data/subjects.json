@@ -1,1 +1,18 @@
 
+[
+  {
+    "code": "CS101",
+    "name": "Data Structures & Algorithms",
+    "credits": 4
+  },
+  {
+    "code": "CS102",
+    "name": "Database Management Systems",
+    "credits": 3
+  },
+  {
+    "code": "CS103",
+    "name": "Object Oriented Programming",
+    "credits": 4
+  }
+]
