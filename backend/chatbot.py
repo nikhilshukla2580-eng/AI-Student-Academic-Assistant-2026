@@ -1,30 +1,37 @@
 import json
 import os
 
-def get_bot_response(user_message):
-    message = user_message.lower().strip()
+FAQ_FILE = os.path.join(os.path.dirname(__file__), '../data/faq.json')
 
-    # Load JSON data
-    base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-    faq_path = os.path.join(base_dir, 'data', 'faq.json')
-    subjects_path = os.path.join(base_dir, 'data', 'subjects.json')
+def load_faqs():
+    if os.path.exists(FAQ_FILE):
+        with open(FAQ_FILE, 'r', encoding='utf-8') as f:
+            return json.load(f)
+    return []
 
-    if "hello" in message or "hi" in message:
-        return "Hello! How can I assist you with your academic query today?"
+def save_faq(category, question, answer):
+    faqs = load_faqs()
+    faqs.append({"category": category, "question": question, "answer": answer})
+    with open(FAQ_FILE, 'w', encoding='utf-8') as f:
+        json.dump(faqs, f, indent=2)
 
-    if "subject" in message or "course" in message:
-        try:
-            with open(subjects_path, 'r') as f:
-                subjects = json.load(f)
-            resp = "Available Subjects:\n"
-            for s in subjects:
-                resp += f"- {s['code']}: {s['name']} ({s['credits']} Credits)\n"
-            return resp
-        except Exception:
-            return "Unable to fetch subjects right now."
+def get_chatbot_response(user_message):
+    query = user_message.lower().strip()
+    faqs = load_faqs()
 
-    if "attendance" in message:
-        return "Minimum 75% attendance is required to sit for end-semester exams."
+    # 1. Direct Keyword Matching from local FAQ database
+    for item in faqs:
+        if item['question'].lower() in query or query in item['question'].lower():
+            return item['answer']
 
-    return "I'm sorry, I couldn't understand that. Try asking about subjects, syllabus, or attendance requirements!"
-  
+    # 2. APSU Quick Fallback Links
+    if "marksheet" in query or "result" in query:
+        return "APSU Marksheet portal par jaane ke liye link: https://share.google/y3DLZPbjaHIH6jnNy"
+    elif "mponline" in query or "fee" in query:
+        return "APSU MPOnline portal: https://apsu.mponline.gov.in/portal/"
+    elif "website" in query or "official" in query:
+        return "APSU Official Website: https://share.google/bolPJrwg8nLkSPfjN"
+
+    # 3. Default Response
+    return f"Aapke query '{user_message}' se related exact notice db mein nahi mila. Kripya APSU Official Portal visit karein: https://share.google/bolPJrwg8nLkSPfjN"
+    
