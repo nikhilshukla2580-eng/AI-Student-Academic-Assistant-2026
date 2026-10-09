@@ -1,15 +1,27 @@
-
 [
   {
-    "question": "What is the attendance requirement?",
-    "answer": "Minimum 75% attendance is required to sit for end-semester exams."
+    "category": "Portal Links",
+    "question": "mponline portal link apsu",
+    "answer": "APSU MPOnline Portal: https://apsu.mponline.gov.in/portal/"
   },
   {
-    "question": "How to contact the academic advisor?",
-    "answer": "You can visit the department office between 2 PM to 4 PM on weekdays."
+    "category": "Portal Links",
+    "question": "marksheet result link",
+    "answer": "APSU Marksheet aur Result Portal: https://share.google/y3DLZPbjaHIH6jnNy"
   },
   {
-    "question": "Where can I get previous year question papers?",
-    "answer": "You can download them from the college library portal under the Resources section."
+    "category": "Portal Links",
+    "question": "official website apsu rewa",
+    "answer": "Awadhesh Pratap Singh University Official Website: https://share.google/bolPJrwg8nLkSPfjN"
+  },
+  {
+    "category": "General",
+    "question": "what is attendance rule",
+    "answer": "Students must maintain a minimum of 75% attendance to be eligible for semester examinations."
+  },
+  {
+    "category": "Academic",
+    "question": "exam form fee payment",
+    "answer": "Exam form aur fee payment ke liye MPOnline APSU portal (https://apsu.mponline.gov.in/portal/) par login karke Student Services section mein jayein."
   }
 ]
