@@ -1,1 +1,37 @@
+==================================================
+   AI-BASED STUDENT ACADEMIC ASSISTANT CHATBOT
+==================================================
+
+1. PROJECT OVERVIEW:
+   An AI-driven assistant designed to aid college students with 
+   queries regarding subjects, syllabus details, and general FAQs.
+
+2. SYSTEM ARCHITECTURE:
+   - Frontend: HTML5, CSS3, JavaScript
+   - Backend: Python, Flask API
+   - Database/Data: SQLite, JSON Storage
+   - Logic: NLP & Rule-based Matching
+
+3. TEAM WORK DIVISION:
+   - Student 1: Frontend Interface (HTML/CSS/JS)
+   - Student 2: Chatbot Intent Processing & NLP Logic
+   - Student 3: Academic Data Management & JSON Schemas
+   - Student 4: Backend API Server & Database Integration
+
+4. REPOSITORY STRUCTURE:
+   ├── backend/
+   │   ├── app.py
+   │   ├── chatbot.py
+   │   └── database.py
+   ├── data/
+   │   ├── faq.json
+   │   ├── subjects.json
+   │   └── syllabus.json
+   ├── documentation/
+   │   └── report_info.txt
+   └── frontend/
+       ├── index.html
+       ├── script.js
+       └── style.css
+==================================================
 
