@@ -1,1 +1,15 @@
 
+[
+  {
+    "subject_code": "CS101",
+    "unit_1": "Arrays, Linked Lists, Stacks, Queues",
+    "unit_2": "Trees, Graphs, Hashing",
+    "unit_3": "Sorting and Searching Algorithms"
+  },
+  {
+    "subject_code": "CS102",
+    "unit_1": "Introduction to DBMS, ER Diagrams",
+    "unit_2": "Relational Algebra, SQL Queries",
+    "unit_3": "Normalization, Transactions, Indexing"
+  }
+]
